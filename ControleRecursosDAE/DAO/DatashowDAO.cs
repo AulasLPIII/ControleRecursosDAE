@@ -46,7 +46,7 @@ namespace ControleRecursosDAE.DAO
                     lista.Add(datashowDTO);
                 }    
             }
-            catch (Exception)
+            catch (MySqlException e)
             {
 
                 throw;
