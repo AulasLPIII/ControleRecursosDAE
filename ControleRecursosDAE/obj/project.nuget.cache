@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QMDfL+B9EDdC6Z9jGlH+H189pJ6YqxRY6qJaa/VOt6BfCYKfO/5eoGcVEC87E4hZ7mhAeyjsamyOf7ZUbfiO/A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mauro Lopes\\Documents\\LP3_2023\\ControleRecursosDAE\\ControleRecursosDAE\\ControleRecursosDAE.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mauro Lopes\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
+  ],
+  "logs": []
+}
