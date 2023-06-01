@@ -14,6 +14,13 @@ namespace ControleRecursosDAE.Controller
         private DatashowDTO datashowdto;
         private DatashowDAO datashowdao;
         private Resultado resultado;
+
+
+
+
+
+
+
         public Resultado SalvarDatashow(string fabricante, string modelo, int luminosidade, bool disponibilidade)
         {
             string msg = "";
@@ -67,6 +74,57 @@ namespace ControleRecursosDAE.Controller
             datashowdao = new DatashowDAO();
             List<DatashowDTO> lista = datashowdao.listar();
             return lista;
+        }
+
+        public Resultado AtualizarDatashow(int id, string fabricante, string modelo, int luminosidade, bool disponibilidade)
+        {
+            string msg = "";
+            msg = ValidarDadosDatashow(fabricante, modelo, luminosidade, disponibilidade);
+            if (msg == "")
+            {
+                //Sucesso
+                datashowdto = new DatashowDTO(id, fabricante, modelo, luminosidade, disponibilidade);
+                datashowdao = new DatashowDAO();
+                int resultadosalva = datashowdao.atualizar(datashowdto);
+                if (resultadosalva > 0)
+                {
+                    msg = "Dados Salvos com Sucesso";
+                    resultado = new Resultado(msg, 1);
+                }
+                else
+                {
+                    msg = "Erro ao Salvar!!!";
+                    resultado = new Resultado(msg, 0);
+                }
+            }
+            else
+            {
+                resultado = new Resultado(msg, 0);
+            }
+            return resultado;
+        }
+
+        public Resultado ApagarDatashow(int id)
+        {
+            string msg = "";
+            int resultadoapagar = 0;
+
+            Resultado resultado = new Resultado();
+            datashowdao = new DatashowDAO();
+            resultadoapagar = datashowdao.apagar(id);
+            if (resultadoapagar > 0)
+            {
+                msg = "Datashow removido com sucesso!";
+                resultado.Mensagem = msg;
+                resultado.Retorno = 1;
+            }
+            else
+            {
+                msg = "Datashow não foi removido!";
+                resultado.Mensagem = msg;
+                resultado.Retorno = 0;
+            }
+            return resultado;
         }
 
     }

@@ -51,6 +51,7 @@
             colModelo = new DataGridViewTextBoxColumn();
             colLuminosidade = new DataGridViewTextBoxColumn();
             colDisponibilidade = new DataGridViewTextBoxColumn();
+            txtID = new TextBox();
             grpbDisponibilidade.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDataShows).BeginInit();
@@ -160,6 +161,7 @@
             toolStripBtnNovo.Name = "toolStripBtnNovo";
             toolStripBtnNovo.Size = new Size(68, 68);
             toolStripBtnNovo.Text = "Novo";
+            toolStripBtnNovo.Click += toolStripBtnNovo_Click;
             // 
             // toolStripSeparator1
             // 
@@ -191,6 +193,7 @@
             toolStripBtnDeletar.Name = "toolStripBtnDeletar";
             toolStripBtnDeletar.Size = new Size(68, 68);
             toolStripBtnDeletar.Text = "Deletar";
+            toolStripBtnDeletar.Click += toolStripBtnDeletar_Click;
             // 
             // toolStripSeparator3
             // 
@@ -214,16 +217,20 @@
             dgvDataShows.Columns.AddRange(new DataGridViewColumn[] { colID, colFabricante, colModelo, colLuminosidade, colDisponibilidade });
             dgvDataShows.Location = new Point(541, 103);
             dgvDataShows.Name = "dgvDataShows";
+            dgvDataShows.ReadOnly = true;
             dgvDataShows.RowHeadersWidth = 51;
             dgvDataShows.RowTemplate.Height = 29;
+            dgvDataShows.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDataShows.Size = new Size(571, 222);
             dgvDataShows.TabIndex = 8;
+            dgvDataShows.CellDoubleClick += dgvDataShows_CellDoubleClick;
             // 
             // colID
             // 
             colID.HeaderText = "ID";
             colID.MinimumWidth = 6;
             colID.Name = "colID";
+            colID.ReadOnly = true;
             colID.Width = 50;
             // 
             // colFabricante
@@ -231,6 +238,7 @@
             colFabricante.HeaderText = "Fabricante";
             colFabricante.MinimumWidth = 6;
             colFabricante.Name = "colFabricante";
+            colFabricante.ReadOnly = true;
             colFabricante.Width = 125;
             // 
             // colModelo
@@ -238,6 +246,7 @@
             colModelo.HeaderText = "Modelo";
             colModelo.MinimumWidth = 6;
             colModelo.Name = "colModelo";
+            colModelo.ReadOnly = true;
             colModelo.Width = 80;
             // 
             // colLuminosidade
@@ -245,6 +254,7 @@
             colLuminosidade.HeaderText = "Luminosidade";
             colLuminosidade.MinimumWidth = 6;
             colLuminosidade.Name = "colLuminosidade";
+            colLuminosidade.ReadOnly = true;
             colLuminosidade.Width = 130;
             // 
             // colDisponibilidade
@@ -252,13 +262,23 @@
             colDisponibilidade.HeaderText = "Disponibilidade";
             colDisponibilidade.MinimumWidth = 6;
             colDisponibilidade.Name = "colDisponibilidade";
+            colDisponibilidade.ReadOnly = true;
             colDisponibilidade.Width = 130;
+            // 
+            // txtID
+            // 
+            txtID.Location = new Point(442, 70);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(82, 27);
+            txtID.TabIndex = 9;
+            txtID.Visible = false;
             // 
             // frmCadDatashow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1124, 346);
+            Controls.Add(txtID);
             Controls.Add(dgvDataShows);
             Controls.Add(toolStrip1);
             Controls.Add(grpbDisponibilidade);
@@ -307,5 +327,6 @@
         private DataGridViewTextBoxColumn colModelo;
         private DataGridViewTextBoxColumn colLuminosidade;
         private DataGridViewTextBoxColumn colDisponibilidade;
+        private TextBox txtID;
     }
 }

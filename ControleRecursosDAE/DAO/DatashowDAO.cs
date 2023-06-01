@@ -3,6 +3,7 @@ using ControleRecursosDAE.Util;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,56 @@ namespace ControleRecursosDAE.DAO
         {
             con = ConnectionFactory.Conexao();    
         }
-        public int apagar(DatashowDTO entity)
+        public int apagar(int id)
         {
-            throw new NotImplementedException();
+            int resultado = 0;
+            try
+            {
+                con.Open();
+                sql = "Delete from datashow where iddatashow = @id";
+                envelope = new MySqlCommand(sql, con);
+                envelope.Parameters.AddWithValue("@id", id);
+                envelope.Prepare();
+                resultado = envelope.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+
+                throw;
+            }
+            finally 
+            { 
+                con.Close(); 
+            }    
+            return resultado;
         }
 
-        public int atualizar(DatashowDTO entity)
+        public int atualizar(DatashowDTO datashow)
         {
-            throw new NotImplementedException();
+            int resultado = 0;
+            try
+            {
+                con.Open();
+                sql = "Update datashow set fabricante = @fab, modelo = @mod, luminosidade = @lum, disponibilidade = @disp where iddatashow = @id";
+                envelope = new MySqlCommand(sql, con);
+                envelope.Parameters.AddWithValue("@fab", datashow.Fabricante);
+                envelope.Parameters.AddWithValue("@mod", datashow.Modelo);
+                envelope.Parameters.AddWithValue("@lum", datashow.Luminosidade);
+                envelope.Parameters.AddWithValue("@disp", datashow.Disponibilidade);
+                envelope.Parameters.AddWithValue("@id", datashow.Id);
+                envelope.Prepare();
+                resultado = envelope.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            { 
+                con.Close(); 
+            }
+            return resultado;
         }
 
         public List<DatashowDTO> listar()
@@ -51,7 +94,10 @@ namespace ControleRecursosDAE.DAO
 
                 throw;
             }
-            finally { con.Close(); }
+            finally 
+            { 
+                con.Close(); 
+            }
             
             return lista;
         }

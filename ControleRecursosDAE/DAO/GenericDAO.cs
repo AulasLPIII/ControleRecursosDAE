@@ -9,7 +9,7 @@ namespace ControleRecursosDAE.DAO
     public interface GenericDAO<T> where T : class
     {
         public int salvar(T entity);
-        public int apagar(T entity);
+        public int apagar(int id);
         public List<T> listar();
         public int atualizar(T entity);
     }
