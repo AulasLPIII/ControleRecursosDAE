@@ -1,5 +1,5 @@
 # ControleRecursosDAE
-Esta aplicação foi desenvolvida durante as aula da disciplina de Linguagem de Programação III.
+Esta aplicação foi desenvolvida durante as aulas da disciplina de Linguagem de Programação III.
 Seu objetivo era demonstrar a utilização de uma Arquitetura MVC composta por View, Controller, Model (DTO e DAO).
 Também tinha o objetivo de demonstrar como usamos o acesso a Banco de Dados usando a Linguagem C#.
 Cenário
